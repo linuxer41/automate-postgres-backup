@@ -57,7 +57,7 @@ gcloud auth activate-service-account --key-file /key.json --project "$GCLOUD_PRO
 
 # Postgres dumping
 DATE=`date +"%Y-%m-%d_%H-%M-%S"`
-FILENAME="${DATE}.sql.gz"
+FILENAME="${DATE}.dump"
 export PGPASSWORD=$POSTGRES_PASSWORD
 POSTGRES_HOST_OPTS="-h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER $POSTGRES_EXTRA_OPTS"
 
