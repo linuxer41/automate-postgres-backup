@@ -1,6 +1,4 @@
 FROM google/cloud-sdk:alpine
-LABEL maintainer="Jamie <jamie@dynastic.co>"
-
 
 # Networking?
 RUN echo "nameserver 1.1.1.1" > /etc/resolv.conf

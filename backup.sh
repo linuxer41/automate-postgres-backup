@@ -61,13 +61,6 @@ FILENAME="${DATE}.sql.gz"
 export PGPASSWORD=$POSTGRES_PASSWORD
 POSTGRES_HOST_OPTS="-h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER $POSTGRES_EXTRA_OPTS"
 
-echo "Creating dump of ${POSTGRES_DATABASE} database from ${POSTGRES_HOST}..."
-pg_dump $POSTGRES_HOST_OPTS $POSTGRES_DATABASE | gzip > $FILENAME
-
-
-
-# Upload to GCS
-echo "Uploading dump to $GCS_BACKUP_BUCKET..."
-gsutil cp $FILENAME $GCS_BACKUP_BUCKET/$FILENAME
-rm $FILENAME # delete old file
+echo "Uploading pg_dump to $GCS_BACKUP_BUCKET..."
+pg_dump $POSTGRES_HOST_OPTS -Fc $POSTGRES_DATABASE | gsutil cp - $GCS_BACKUP_BUCKET/$FILENAME
 echo "SQL backup uploaded successfully."
