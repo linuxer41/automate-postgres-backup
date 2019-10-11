@@ -2,5 +2,5 @@
 
 set -e
 
-printf "Performing a backup"
+echo -n "Performing a backup"
 sh backup.sh
