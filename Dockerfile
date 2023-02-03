@@ -1,7 +1,7 @@
 FROM google/cloud-sdk:alpine
 
 # Networking?
-RUN echo "nameserver 1.1.1.1" > /etc/resolv.conf
+RUN cat /etc/resolv.conf
 
 # Install deps
 ADD setup.sh setup.sh
