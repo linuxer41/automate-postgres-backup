@@ -12,7 +12,6 @@ on:
       - '!readme.md'
       - '!license'
       - '!.gitignore'
-    # if: github.event.repository.full_name == github.repository
   pull_request:
     branches:
       - main
