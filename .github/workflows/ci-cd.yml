@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - '.github/workflows/ci-cd.yml'
       - '*.sh'
       - '.dockerignore'
       - 'Dockerfile'
@@ -16,12 +17,13 @@ on:
     branches:
       - main
     paths:
+      - '.github/workflows/ci-cd.yml'
       - '*.sh'
       - '.dockerignore'
       - 'Dockerfile'
       - '!readme.md'
       - '!license'
-      - '!.gitignore'
+      - '!.gitignore''
       
 jobs:
   docker:
