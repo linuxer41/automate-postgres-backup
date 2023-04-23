@@ -6,8 +6,9 @@ set -e
 # Environment checks
 check_env_variable() {
   varname=$1
-  if [ -n "${!varname}" ]; then
-    echo "$varname is set"
+  varvalue=`eval echo '$'"${varname}"` # esta línea cambió
+  if [ -n "${varvalue}" ]; then
+    echo "$varname is set to '$varvalue'"
   else
     echo "Error: $varname is not set"
     exit 1
