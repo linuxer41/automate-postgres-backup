@@ -13,7 +13,7 @@ This docker image allows for scheduled backups of a postgres docker container to
 -   Backups are versioned using a timestamp.
 -   Backups are automatically deleted after a set number of days.
 -   Backups are automatically deleted after a set number of backups.
--   works with postgres 15 (tested) - [change pg_dump version at](/setup.sh#L10) `setup.sh`
+-   works with postgres 9.5+ (Change version in `POSTGRES_VERSION` environment variable)
 
 
 
@@ -38,6 +38,7 @@ This image is published on the docker hub.
 | `ENCRYPTION_PASSWORD`   | The password to use for encrypting the backup. **Default:** `''`                                                |
 | `BACKUP_RETENTION_DAYS` | The number of days to keep backups for. **Default:** `''`                                                        |
 | `BACKUP_RETENTION_COUNT`| The number of backups to keep. **Default:** `''`                                                                 |
+| `POSTGRES_VERSION`      | The version of postgres to use. **Default:** `15`                                                             |
 
 ## Scheduling
 
