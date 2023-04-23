@@ -1,7 +1,6 @@
 #! /bin/sh
 
 set -e
-set -o pipefail
 
 # Environment checks
 check_env_variable() {
