@@ -1,6 +1,6 @@
 # Backup Postgres Docker containers to Google Cloud Storage
 
-Inspired by postgres-backup-s3 and based on the work of [Nullpixel](postgres-docker-gcs-backup).
+Inspired by postgres-backup-s3 and based on the work of [Nullpixel](https://github.com/Nullpixel1/postgres-docker-gcs-backup).
 
 This docker image allows for scheduled backups of a postgres docker container to a Google Cloud Storage bucket.
 
@@ -8,12 +8,11 @@ This docker image allows for scheduled backups of a postgres docker container to
 
 -   Backs up a postgres database to a Google Cloud Storage bucket.
 -   Backups are compressed using gzip.
--   Backups are encrypted using AES-256.
+-   Backups are encrypted using AES-256. (Password is set in the environment variable `ENCRYPTION_PASSWORD`, function is disabled for now)
 -   Backups are scheduled using cron.
 -   Backups are versioned using a timestamp.
 -   Backups are automatically deleted after a set number of days.
 -   Backups are automatically deleted after a set number of backups.
--   Backups are automatically deleted after a set number of backups per day.
 -   works with postgres 15 (tested) - [change pg_dump version at](/setup.sh#L10) `setup.sh`
 
 
@@ -36,6 +35,9 @@ This image is published on the docker hub.
 | `GCLOUD_PROJECT_ID`     | The Project ID which the bucket you wish to backup to is in.                                                   |
 | `GCS_BACKUP_BUCKET`     | The gs:// path to the storage bucket you wish to backup to.                                                    |
 | `SCHEDULE`              | How often you wish the backup to occur. See [Scheduling](#scheduling) for more information on formatting this. |
+| `ENCRYPTION_PASSWORD`   | The password to use for encrypting the backup. **Default:** `''`                                                |
+| `BACKUP_RETENTION_DAYS` | The number of days to keep backups for. **Default:** `''`                                                        |
+| `BACKUP_RETENTION_COUNT`| The number of backups to keep. **Default:** `''`                                                                 |
 
 ## Scheduling
 
