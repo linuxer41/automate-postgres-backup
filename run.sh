@@ -64,7 +64,7 @@ else
 fi
 
 
-if [ "${SCHEDULE}" = "**None**" ]; then
+if [ -z "${SCHEDULE}" ]; then
   echo "You must set a backup schedule."
   exit 1
 fi

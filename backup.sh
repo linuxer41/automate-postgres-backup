@@ -1,11 +1,15 @@
 #! /bin/sh
 
 set -e
+# set -o pipefail
 
 # Environment checks
 check_env_variable() {
-  if [ "${!1}" = "**None**" ]; then
-    echo "You need to set the $1 environment variable."
+  varname=$1
+  if [ -n "${!varname}" ]; then
+    echo "$varname is set"
+  else
+    echo "Error: $varname is not set"
     exit 1
   fi
 }
