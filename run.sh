@@ -77,7 +77,7 @@ fi
 # log SCHEDULE
 echo "SCHEDULE: ${SCHEDULE}"
 
-if [ -n "${SCHEDULE}" ]; then
+if [ -z "${SCHEDULE}" ]; then
   echo "You must set a backup schedule."
   exit 1
 fi
