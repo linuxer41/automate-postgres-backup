@@ -92,5 +92,5 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: linuxer41/automate-postgres-backup
-          readme-filepath: ./README-DOCKER-HUB.md
+          readme-filepath: ./README.md
           short-description: ${{ github.event.repository.description }}
