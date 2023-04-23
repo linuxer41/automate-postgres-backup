@@ -74,6 +74,8 @@ else
   echo "POSTGRES_VERSION not set, skipping installation of PostgreSQL client"
 fi
 
+# log SCHEDULE
+echo "SCHEDULE: ${SCHEDULE}"
 
 if [ -n "${SCHEDULE}" ]; then
   echo "You must set a backup schedule."
