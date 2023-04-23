@@ -57,19 +57,23 @@ Below is a sample Docker Compose service.
 dbbackups:
     image: "linuxer41/automate-postgres-backup:latest"
     depends_on:
-      - database
+        - database
     networks:
-      - internet
-      - api-internal
+        - internet
+        - api-internal
     environment:
-      SCHEDULE: "@every 6h"
-      POSTGRES_HOST: "database"
-      POSTGRES_DATABASE: "SomeDatabase"
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgres"
-      GCLOUD_KEYFILE_BASE64: "BASE64_PROJECT_KEYFILE_HERE"
-      GCLOUD_PROJECT_ID: "hello-world"
-      GCS_BACKUP_BUCKET: "gs://my-backup-bucket-name"
+        SCHEDULE: "@every 6h"
+        POSTGRES_HOST: "database"
+        POSTGRES_DATABASE: "SomeDatabase"
+        POSTGRES_USER: "postgres"
+        POSTGRES_PASSWORD: "postgres"
+        GCLOUD_KEYFILE_BASE64: "BASE64_PROJECT_KEYFILE_HERE"
+        GCLOUD_PROJECT_ID: "hello-world"
+        GCS_BACKUP_BUCKET: "gs://my-backup-bucket-name"
+        BACKUP_RETENTION_DAYS: "7"
+        BACKUP_RETENTION_COUNT: "10"
+        POSTGRES_VERSION: "15"
+        ENCRYPTION_PASSWORD: "password"
 ```
 
 Note: the internet network exists as api-internal is an internal network with no connection to the internet. To enable backing up to the cloud, the service has to be on an external network which can access the internet. api-internal is the network which the database is on, so that the database hostname resolves to that service.
