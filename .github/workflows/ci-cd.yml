@@ -90,7 +90,7 @@ jobs:
         uses: peter-evans/dockerhub-description@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: linuxer41/automate-postgres-backup
           readme-filepath: ./README-DOCKER-HUB.md
           short-description: ${{ github.event.repository.description }}
