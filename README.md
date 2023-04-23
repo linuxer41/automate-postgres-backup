@@ -43,7 +43,7 @@ This image is published on the docker hub.
 ## Scheduling
 
 The `SCHEDULE` environment variable is used to determine how often the backup should occur. It uses the [cron](https://en.wikipedia.org/wiki/Cron) format.
-Additionally, you can use the basic inline format [h, d, w, m, y] to specify the schedule. For example, `6h` will run the backup every 6 hours.
+Additionally, you can use the basic inline format (@every number[h, d, w, m, y]) to specify the schedule. For example, `@every 6h` will run the backup every 6 hours.
 
 ## Google Cloud Service Account
 

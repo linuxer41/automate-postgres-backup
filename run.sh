@@ -19,22 +19,33 @@ function to_crontab_format() {
         return 1
     fi
 
+    # Verificar que el argumento tenga el formato @every
+    if [[ "$1" != "@every "* ]]; then
+        echo "Error: El tiempo de ejecución debe estar en formato @every número_string."
+        return 1
+    fi
+
+    # Obtener el número y la unidad de tiempo
+    local duration=${1#*@every }
+    local unit=${duration: -1}
+    local number=${duration:0:-1}
+
     # Verificar que se reciba una unidad de tiempo válida
-    case "$1" in
-        *h) ;;
-        *d) ;;
-        *w) ;;
-        *m) ;;
+    case "$unit" in
+        h) ;;
+        d) ;;
+        w) ;;
+        m) ;;
         *) echo "Error: Unidad de tiempo no válida. Utilice h, d, w o m."
            return 1;;
     esac
 
     # Convertir el tiempo de ejecución a formato crontab
-    case "$1" in
-        *h) echo "0 */${1%h} * * *";;
-        *d) echo "0 0 */${1%d} * *";;
-        *w) echo "0 0 * * ${1%w}";;
-        *m) echo "0 0 1 */${1%m} *";;
+    case "$unit" in
+        h) echo "0 */$number * * *";;
+        d) echo "0 0 */$number * *";;
+        w) echo "0 0 * * $number";;
+        m) echo "0 0 1 */$number *";;
     esac
 }
 
