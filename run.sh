@@ -89,6 +89,9 @@ else
     cron_schedule="$(to_crontab_format "${SCHEDULE}")"
 fi
 
+echo "give permission to backup.sh"
+chmod +x backup.sh
+
 echo "Performing an immediate backup..."
 sh backup.sh # perform an immediate backup
 
